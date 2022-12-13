@@ -1,0 +1,1346 @@
+---
+title: "Fastball Analysis"
+author: "Riley Feltner"
+date: "2022-11-12"
+output: html_document
+---
+
+#download data
+```{r}
+RightFB <- read.csv("Right FB.csv")
+LeftFB <- read.csv("Left FB.csv")
+RightSI <- read.csv("Right SI.csv")
+LeftSI <- read.csv("Left SI.csv")
+RightCT <- read.csv("Right CT.csv")
+LeftCT <- read.csv("Left CT.csv")
+```
+
+#Summary Stats Right FB
+```{r}
+#install.packages("stargazer")
+library(stargazer)
+library(dplyr)
+
+
+RightFB <- RightFB[c(2:4, 9, 11, 13, 18, 19)]
+
+RightFB$ExAVG <- as.numeric(as.character(RightFB$ExAVG))
+RightFB$ExSLG <- as.numeric(as.character(RightFB$ExSLG))
+RightFB$Miss. <- as.numeric(as.character(RightFB$Miss.))
+RightFB$K. <- as.numeric(as.character(RightFB$K.))
+RightFB$Vel <- as.numeric(as.character(RightFB$Vel))
+RightFB$TMIndVertBrk <- as.numeric(as.character(RightFB$TMIndVertBrk))
+
+RightFB <- na.omit(RightFB)
+
+
+RightFB1 <- filter(RightFB, P > 24)
+
+
+RightFB1 %>%
+  stargazer(type = "text",
+            summary.stat = c("N", "median", "mean", "min", "max", "p25", "p75"),
+            title = "Right Handed Pitcher's FB (>= 25 Pitches)")
+```
+
+#Summary Stats Left FB
+```{r}
+
+LeftFB <- LeftFB[c(2:6, 9, 11, 13, 18, 19)]
+
+LeftFB$ExAVG <- as.numeric(as.character(LeftFB$ExAVG))
+LeftFB$ExSLG <- as.numeric(as.character(LeftFB$ExSLG))
+LeftFB$Miss. <- as.numeric(as.character(LeftFB$Miss.))
+LeftFB$K. <- as.numeric(as.character(LeftFB$K.))
+LeftFB$Vel <- as.numeric(as.character(LeftFB$Vel))
+LeftFB$TMIndVertBrk <- as.numeric(as.character(LeftFB$TMIndVertBrk))
+
+LeftFB <- na.omit(LeftFB)
+
+LeftFB1 <- filter(LeftFB, P > 24)
+
+
+LeftFB1 %>%
+  stargazer(type = "text",
+            summary.stat = c("N", "median", "mean", "min", "max", "p25", "p75"),
+            title = "Left Handed Pitcher's FB (>= 25 Pitches)")
+```
+
+#Summary Stats Right SI
+```{r}
+RightSI <- RightSI[c(2:6, 9, 11, 13, 18, 19)]
+
+RightSI$ExAVG <- as.numeric(as.character(RightSI$ExAVG))
+RightSI$ExSLG <- as.numeric(as.character(RightSI$ExSLG))
+RightSI$Miss. <- as.numeric(as.character(RightSI$Miss.))
+RightSI$K. <- as.numeric(as.character(RightSI$K.))
+RightSI$Vel <- as.numeric(as.character(RightSI$Vel))
+RightSI$TMIndVertBrk <- as.numeric(as.character(RightSI$TMIndVertBrk))
+
+RightSI <- na.omit(RightSI)
+
+RightSI1 <- filter(RightSI, P > 24)
+
+
+RightSI1 %>%
+  stargazer(type = "text",
+            summary.stat = c("N", "median", "mean", "min", "max", "p25", "p75"),
+            title = "Right Handed Pitcher's SI (>= 100 Pitches)")
+```
+
+#Summary Stats Left SI
+```{r}
+LeftSI <- LeftSI[c(2:6, 9, 11, 13, 18, 19)]
+
+LeftSI$ExAVG <- as.numeric(as.character(LeftSI$ExAVG))
+LeftSI$ExSLG <- as.numeric(as.character(LeftSI$ExSLG))
+LeftSI$Miss. <- as.numeric(as.character(LeftSI$Miss.))
+LeftSI$K. <- as.numeric(as.character(LeftSI$K.))
+LeftSI$Vel <- as.numeric(as.character(LeftSI$Vel))
+LeftSI$TMIndVertBrk <- as.numeric(as.character(LeftSI$TMIndVertBrk))
+
+LeftSI <- na.omit(LeftSI)
+
+LeftSI1 <- filter(LeftSI, P > 24)
+
+
+LeftSI1 %>%
+  stargazer(type = "text",
+            summary.stat = c("N", "median", "mean", "min", "max", "p25", "p75"),
+            title = "Left Handed Pitcher's SI (>= 100 Pitches)")
+```
+
+#Summary Stats Right CT 
+```{r}
+RightCT <- RightCT[c(2:6, 9, 11, 13, 18, 19)]
+
+RightCT$ExAVG <- as.numeric(as.character(RightCT$ExAVG))
+RightCT$ExSLG <- as.numeric(as.character(RightCT$ExSLG))
+RightCT$Miss. <- as.numeric(as.character(RightCT$Miss.))
+RightCT$K. <- as.numeric(as.character(RightCT$K.))
+RightCT$Vel <- as.numeric(as.character(RightCT$Vel))
+RightCT$TMIndVertBrk <- as.numeric(as.character(RightCT$TMIndVertBrk))
+
+RightCT <- na.omit(RightCT)
+
+RightCT1 <- filter(RightCT, P > 24)
+
+
+RightCT1 %>%
+  stargazer(type = "text",
+            summary.stat = c("N", "median", "mean", "min", "max", "p25", "p75"),
+            title = "Right Handed Pitcher's CT (>= 100 Pitches)")
+```
+
+#Summary Stats Left CT
+```{r}
+LeftCT <- LeftCT[c(2:6, 9, 11, 13, 18, 19)]
+
+LeftCT$ExAVG <- as.numeric(as.character(LeftCT$ExAVG))
+LeftCT$ExSLG <- as.numeric(as.character(LeftCT$ExSLG))
+LeftCT$Miss. <- as.numeric(as.character(LeftCT$Miss.))
+LeftCT$K. <- as.numeric(as.character(LeftCT$K.))
+LeftCT$Vel <- as.numeric(as.character(LeftCT$Vel))
+LeftCT$TMIndVertBrk <- as.numeric(as.character(LeftCT$TMIndVertBrk))
+
+LeftCT <- na.omit(LeftCT)
+
+LeftCT1 <- filter(LeftCT, P > 24)
+
+
+LeftCT %>%
+  stargazer(type = "text",
+            summary.stat = c("N", "median", "mean", "min", "max", "p25", "p75"),
+            title = "Left Handed Pitcher's CT (>= 100 Pitches)")
+```
+
+#Depended Variable Analysis Load Datasets
+```{r}
+WinningPerc <- read.csv("FanGraphs Leaderboard 2022 Team Pitching copy.csv")
+StrikoutPerc <- read.csv("FanGraphs Leaderboard (2).csv")
+DepVar <- read.csv("Team Data.csv")
+```
+
+#Clean Data
+```{r}
+WinningPerc <- WinningPerc[c(1, 21)]
+StrikoutPerc <- StrikoutPerc[c(1,6)]
+DepVar <- DepVar[c(1, 24:25)]
+merged <- merge(WinningPerc, DepVar, by = "Team")
+merged1 <- merge(WinningPerc, StrikoutPerc, by = "Team")
+```
+
+#Visualize XBA and Winning Percentage
+```{r}
+library(mlbplotR)
+library(ggplot2)
+library(mlbplotR)
+library(ggpubr)
+
+filtered_stats <- merged %>%
+  filter(Team != "---")
+
+filtered_stats %>% 
+  ggplot(aes(x = XBA, y = Winning.Perc)) +
+  geom_smooth(method = "lm", se=FALSE, color="black", formula = y ~ x) +
+  geom_mlb_logos(aes(team_abbr = Team), width = 0.06, alpha = 0.6) +
+  labs(title = "2022 MLB Winning % and Pitcher Expected Batting Average",
+       y = "Winning Percentage",
+       x = "XBA",
+       caption = "Data: FanGraphs | Riley Feltner || Logos: mlbplotR")+
+  coord_cartesian(ylim = c(0.3, 0.7))+
+  theme_minimal()+
+  stat_cor(aes(label = ..rr.label..), color = "red", geom = "label", label.y.npc = "bottom")
+```
+#Visualize XSLG and Winning Percentage
+```{r}
+filtered_stats <- merged %>%
+  filter(Team != "---")
+
+filtered_stats %>% 
+  ggplot(aes(x = XSLG, y = Winning.Perc)) +
+  geom_smooth(method = "lm", se=FALSE, color="black", formula = y ~ x) +
+  geom_mlb_logos(aes(team_abbr = Team), width = 0.06, alpha = 0.6) +
+  labs(title = "2022 MLB Winning % and Pitcher Expected Slugging %",
+       y = "Winning Percentage",
+       x = "XSLG",
+       caption = "Data: FanGraphs | Riley Feltner || Logos: mlbplotR")+
+  coord_cartesian(ylim = c(0.3, 0.7))+
+  theme_minimal()+
+  stat_cor(aes(label = ..rr.label..), color = "red", geom = "label", label.y.npc = "bottom")
+```
+
+#Visualize K% and Winning Percentage
+```{r}
+filtered_stats <- merged1 %>%
+  filter(Team != "---")
+
+filtered_stats %>% 
+  ggplot(aes(x = K.Perc, y = Winning.Perc)) +
+  geom_smooth(method = "lm", se=FALSE, color="black", formula = y ~ x) +
+  geom_mlb_logos(aes(team_abbr = Team), width = 0.06, alpha = 0.6) +
+  labs(title = "2022 MLB Winning % and Pitcher Strikeout %",
+       y = "Winning Percentage",
+       x = "Strikeout Percentage",
+       caption = "Data: FanGraphs | Riley Feltner || Logos: mlbplotR")+
+  coord_cartesian(ylim = c(0.3, 0.7))+
+  theme_minimal()+
+  stat_cor(aes(label = ..rr.label..), color = "red", geom = "label")
+```
+
+
+```{r}
+library(tidyverse)
+library(Hmisc)
+
+#RightFB Binned Heatmap Count
+  ggplot(data = RightFB1, mapping = aes(x = TMHrzBrk, y = TMIndVertBrk))+
+   geom_bin_2d(bins = 12 )+
+   scale_fill_gradient(low = "green", high = "red")+
+   ylim(5, 20)+
+   xlim(-5,15)+
+   coord_fixed(1.3)+
+    labs(title = "Right FB >= 25 P",
+         subtitle = "MLB 2022",
+         x = "Horizontal Break",
+         y = "Vertical Break",
+         caption = "Sample Size: 495")
+
+
+ #LeftFB Binned Heatmap Count
+  ggplot(data = LeftFB1, mapping = aes(x = TMHrzBrk, y = TMIndVertBrk))+
+   geom_bin_2d(bins = 12 )+
+   scale_fill_gradient(low = "green", high = "red")+
+   coord_fixed(1.3)+
+    labs(title = "Left FB >= 25 P",
+         subtitle = "MLB 2022",
+         x = "Horizontal Break",
+         y = "Vertical Break",
+         caption = "Sample Size: 168") 
+  
+
+  #RightSI Binned Heatmap Count
+  ggplot(data = RightSI1, mapping = aes(x = TMHrzBrk, y = TMIndVertBrk))+
+   geom_bin_2d(bins = 12)+
+   scale_fill_gradient(low = "green", high = "red")+
+   coord_fixed(1)+
+    labs(title = "Right SI >= 25 P",
+         subtitle = "MLB 2022",
+         x = "Horizontal Break",
+         y = "Vertical Break",
+         caption = "Sample Size: 290")  
+  
+ 
+  #LeftSI Binned Heatmap Count
+  ggplot(data = LeftSI1, mapping = aes(x = TMHrzBrk, y = TMIndVertBrk))+
+   geom_bin_2d(bins = 12)+
+   scale_fill_gradient(low = "green", high = "red")+
+   coord_fixed(1)+
+    labs(title = "Left SI >= 25 P",
+         subtitle = "MLB 2022",
+         x = "Horizontal Break",
+         y = "Vertical Break",
+         caption = "Sample Size: 105") 
+  
+  #RightCT Binned Heatmap Count
+  ggplot(data = RightCT1, mapping = aes(x = TMHrzBrk, y = TMIndVertBrk))+
+   geom_bin_2d(bins = 12)+
+   scale_fill_gradient(low = "green", high = "red")+
+   coord_fixed(1)+
+    labs(title = "Righthanded CT >= 25 P",
+         subtitle = "MLB 2022",
+         x = "Horizontal Break",
+         y = "Vertical Break",
+         caption = "Sample Size: 136") 
+  
+  #LeftCT Binned Heatmap Count
+  ggplot(data = LeftCT1, mapping = aes(x = TMHrzBrk, y = TMIndVertBrk))+
+   geom_bin_2d(bins = 12)+
+   scale_fill_gradient(low = "green", high = "red")+
+   coord_fixed(1)+
+    labs(title = "Lefthanded CT >= 25 P",
+         subtitle = "MLB 2022",
+         x = "Horizontal Break",
+         y = "Vertical Break",
+         caption = "Sample Size: 50")  
+```
+#Just me trying to determine what ranges to roll with for velo, VB, HB
+```{r}
+#RHP VB Categories
+VLowVB <- filter(RightFB1, TMIndVertBrk <= 10) #18
+LowVB <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12.0)) #21
+Dead <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15.0)) #131
+HighVB <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18)) #242
+VHighVB <- filter(RightFB1, TMIndVertBrk >= 18.1) #83
+
+# RHP Velo Categories
+VLowVel <- filter(RightFB1, Vel <= 91) #57
+LowVel <- filter(RightFB1, between(Vel, 91.1, 93.0)) #102
+AvgVel <- filter(RightFB1, between(Vel, 93.1, 95)) #173
+HighVel <- filter(RightFB1, between(Vel, 95.1, 97)) #123
+VHighVel <- filter(RightFB1, Vel >= 97.1) #41
+
+#RHP HB Categories
+VLowHB <- filter(RightFB1, TMHrzBrk <= 3) #53
+LowHB <- filter(RightFB1, between(TMHrzBrk, 3.1, 6)) #112
+AVGHB <- filter(RightFB1, between(TMHrzBrk, 6.1, 8)) #107
+HighHB <- filter(RightFB1, between(TMHrzBrk, 8.1, 10)) #98
+VHighHB <- filter(RightFB1, TMHrzBrk >= 10.1) #125
+
+#LHP VB Categories
+LHPVLowVB <- filter(LeftFB1, TMIndVertBrk <= 10) #4
+LHPLowVB <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12.0)) #6
+LHPDead <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15.0)) #50
+LHPHighVB <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18)) #87
+LHPVHighVB <- filter(LeftFB1, TMIndVertBrk >= 18.1) #21
+
+#LHP HB Categories
+LHPVLowHB <- filter(LeftFB1, TMHrzBrk >= -3) #19
+LHPLowHB <- filter(LeftFB1, between(TMHrzBrk, -6, -3.1)) #32
+LHPAVGHB <- filter(LeftFB1, between(TMHrzBrk, -8, -6.1)) #39
+LHPHighHB <- filter(LeftFB1, between(TMHrzBrk, -10, -8.1)) #25
+LHPVHighHB <- filter(LeftFB1, TMHrzBrk <= -10.1) #53
+
+#LHP Velo Categories
+LHPVLowVel <- filter(LeftFB1, Vel <= 91) #33
+LHPLowVel <- filter(LeftFB1, between(Vel, 91.1, 93.0)) #52
+LHPAvgVel <- filter(LeftFB1, between(Vel, 93.1, 95)) #58
+LHPHighVel <- filter(LeftFB1, between(Vel, 95.1, 97)) #23
+LHPVHighVel <- filter(LeftFB1, Vel >= 97.1) #2
+```
+
+#Very Low Velo RH FB
+```{r}
+#Very Low Velocity Category and Very Low VB
+library(dplyr)
+RightFBVeryLowVBVeryLowHBVeryLowVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk <= 3, Vel <=91)
+    mean(RightFBVeryLowVBVeryLowHBVeryLowVel$ExAVG)
+    count(RightFBVeryLowVBVeryLowHBVeryLowVel)
+
+RightFBVeryLowVBLowHBVeryLowVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 3.1, 6), Vel <=91)
+    mean(RightFBVeryLowVBLowHBVeryLowVel$ExAVG)
+    count(RightFBVeryLowVBLowHBVeryLowVel$ExAVG)
+
+RightFBVeryLowVBAvgHBVeryLowVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 6.1, 8), Vel <=91)
+    mean(RightFBVeryLowVBAvgHBVeryLowVel$ExAVG)
+    count(RightFBVeryLowVBAvgHBVeryLowVel$ExAVG)
+
+RightFBVeryLowVBHighHBVeryLowVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 8.1, 10), Vel <=91)
+    mean(RightFBVeryLowVBHighHBVeryLowVel$ExAVG)
+    count(RightFBVeryLowVBHighHBVeryLowVel$ExAVG)
+
+RightFBVeryLowVBVeryHighHBVeryLowVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk >= 10.1, Vel <=91)
+  mean(RightFBVeryLowVBVeryHighHBVeryLowVel$ExAVG)
+  count(RightFBVeryLowVBVeryHighHBVeryLowVel$ExAVG)
+
+
+#Very Low Velocity Category and Low VB
+  
+RightFBLowVBVeryLowHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <=3, Vel <=91)
+    mean(RightFBLowVBVeryLowHBVeryLowVel$ExAVG)
+    count(RightFBLowVBVeryLowHBVeryLowVel$ExAVG)
+    
+RightFBLowVBLowHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 3.1, 6), Vel <=91)
+    mean(RightFBLowVBLowHBVeryLowVel$ExAVG)
+    count(RightFBLowVBLowHBVeryLowVel$ExAVG)
+
+RightFBLowVBAvgHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 6.1, 8), Vel <=91)
+    mean(RightFBLowVBAvgHBVeryLowVel$ExAVG)
+    count(RightFBLowVBAvgHBVeryLowVel$ExAVG)
+
+RightFBLowVBHighHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 8.1, 10), Vel <=91)
+    mean(RightFBLowVBHighHBVeryLowVel$ExAVG)
+    count(RightFBLowVBHighHBVeryLowVel$ExAVG)
+
+RightFBLowVBVeryHighHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= 10.1, Vel <=91)
+    mean(RightFBLowVBVeryHighHBVeryLowVel$ExAVG)
+    count(RightFBLowVBVeryHighHBVeryLowVel$ExAVG)
+
+
+#Very Low Velocity Category and Dead VB
+RightFBDeadVBVeryLowHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <=3, Vel <= 91)
+    mean(RightFBDeadVBVeryLowHBVeryLowVel$ExAVG)
+    count(RightFBDeadVBVeryLowHBVeryLowVel)
+
+RightFBDeadVBLowHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 3.1, 6), Vel <= 91)
+    mean(RightFBDeadVBLowHBVeryLowVel$ExAVG)
+    count(RightFBDeadVBLowHBVeryLowVel$ExAVG)
+
+RightFBDeadVBAvgHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 6.1, 8), Vel <= 91)
+    mean(RightFBDeadVBAvgHBVeryLowVel$ExAVG)
+    count(RightFBDeadVBAvgHBVeryLowVel$ExAVG)
+    
+RightFBDeadVBHighHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 8.1, 10), Vel <= 91)
+    mean(RightFBDeadVBHighHBVeryLowVel$ExAVG)
+    count(RightFBDeadVBHighHBVeryLowVel$ExAVG)
+    
+RightFBDeadVBVeryHighHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= 10.1, Vel <= 91)
+    mean(RightFBDeadVBVeryHighHBVeryLowVel$ExAVG)
+    count(RightFBDeadVBVeryHighHBVeryLowVel)
+
+
+#Very Low Velocity Category and High VB
+RightFBHighVBVeryLowHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <=3, Vel <= 91)
+    mean(RightFBHighVBVeryLowHBVeryLowVel$ExAVG)
+    count(RightFBHighVBVeryLowHBVeryLowVel$ExAVG)
+
+RightFBHighVBLowHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 3.1, 6), Vel <= 91)
+    mean(RightFBHighVBLowHBVeryLowVel$ExAVG)
+    count(RightFBHighVBLowHBVeryLowVel$ExAVG)
+
+RightFBHighVBAvgHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 6.1, 8), Vel <= 91)
+    mean(RightFBHighVBAvgHBVeryLowVel$ExAVG)
+    count(RightFBHighVBAvgHBVeryLowVel$ExAVG)
+    
+RightFBHighVBHighHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 8.1, 10), Vel <= 91)
+    mean(RightFBHighVBHighHBVeryLowVel$ExAVG)
+    count(RightFBHighVBHighHBVeryLowVel$ExAVG)
+    
+RightFBHighVBVeryHighHBVeryLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= 10.1, Vel <= 91)
+    mean(RightFBHighVBVeryHighHBVeryLowVel$ExAVG)
+    count(RightFBHighVBVeryHighHBVeryLowVel$ExAVG)
+
+#Very Low Velocity Category and Very High VB
+RightFBVeryHighVBVeryLowHBVeryLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= 3,Vel <= 91)
+    mean(RightFBVeryHighVBVeryLowHBVeryLowVel$ExAVG)
+    count(RightFBVeryHighVBVeryLowHBVeryLowVel$ExAVG)
+
+RightFBVeryHighVBLowHBVeryLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 3.1, 6),Vel <= 91)
+    mean(RightFBVeryHighVBLowHBVeryLowVel$ExAVG)
+    count(RightFBVeryHighVBLowHBVeryLowVel$ExAVG)
+
+RightFBVeryHighVBAvgHBVeryLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 6.1, 8),Vel <= 91)
+    mean(RightFBVeryHighVBAvgHBVeryLowVel$ExAVG)
+    count(RightFBVeryHighVBAvgHBVeryLowVel$ExAVG)
+    
+RightFBVeryHighVBHighHBVeryLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 8.1, 10),Vel <= 91)
+    mean(RightFBVeryHighVBHighHBVeryLowVel$ExAVG)
+    count(RightFBVeryHighVBHighHBVeryLowVel$ExAVG)
+    
+RightFBVeryHighVBVeryHighHBVeryLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= 10.1,Vel <= 91)
+    mean(RightFBVeryHighVBVeryHighHBVeryLowVel$ExAVG)
+    count(RightFBVeryHighVBVeryHighHBVeryLowVel$ExAVG)
+    
+mean(RightFB1$ExAVG)
+quantile(LeftFB1$ExAVG, probs = c(0.10, 0.50, 0.90))
+```
+
+
+#Low Velo RH FB
+```{r}
+#Low Velocity Category and Very Low VB
+RightFBVeryLowVBVeryLowHBLowVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk <= 3, between(Vel, 91.1, 93))
+    mean(RightFBVeryLowVBVeryLowHBLowVel$ExAVG)
+    count(RightFBVeryLowVBVeryLowHBLowVel$ExAVG)
+    
+RightFBVeryLowVBLowHBLowVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 3.1, 6), between(Vel, 91.1, 93))
+    mean(RightFBVeryLowVBLowHBLowVel$ExAVG)
+    count(RightFBVeryLowVBLowHBLowVel$ExAVG)
+    
+RightFBVeryLowVBAvgHBLowVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 6.1, 8), between(Vel, 91.1, 93))
+    mean(RightFBVeryLowVBAvgHBLowVel$ExAVG)
+    count(RightFBVeryLowVBAvgHBLowVel$ExAVG)
+    
+RightFBVeryLowVBHighHBLowVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 8.1, 10), between(Vel, 91.1, 93))
+    mean(RightFBVeryLowVBHighHBLowVel$ExAVG)
+    count(RightFBVeryLowVBHighHBLowVel$ExAVG)
+    
+RightFBVeryLowVBVeryHighHBLowVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk >= 10.1, between(Vel, 91.1, 93))
+    mean(RightFBVeryLowVBVeryHighHBLowVel$ExAVG)
+    count(RightFBVeryLowVBVeryHighHBLowVel$ExAVG)
+
+#Low Velocity Category and Low VB
+RightFBLowVBVeryLowHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= 3, between(Vel, 91.3, 93))
+    mean(RightFBLowVBVeryLowHBLowVel$ExAVG)
+    count(RightFBLowVBVeryLowHBLowVel$ExAVG)
+    
+RightFBLowVBLowHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 3.1, 6), between(Vel, 91.1, 93))
+    mean(RightFBLowVBLowHBLowVel$ExAVG)
+    count(RightFBLowVBLowHBLowVel$ExAVG)
+    
+RightFBLowVBAvgHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 6.1, 8), between(Vel, 91.1, 93))
+    mean(RightFBLowVBAvgHBLowVel$ExAVG)
+    count(RightFBLowVBAvgHBLowVel$ExAVG)
+
+RightFBLowVBHighHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 8.1, 10), between(Vel, 91.1, 93))
+    mean(RightFBLowVBHighHBLowVel$ExAVG)
+    count(RightFBLowVBHighHBLowVel$ExAVG)
+
+RightFBLowVBVeryHighHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= 10.1, between(Vel, 91.1, 93))
+    mean(RightFBLowVBVeryHighHBLowVel$ExAVG)
+    count(RightFBLowVBVeryHighHBLowVel$ExAVG)
+
+#Low Velocity Category and Dead VB
+RightFBDeadVBVeryLowHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= 3, between(Vel, 91.3, 93))
+    mean(RightFBDeadVBVeryLowHBLowVel$ExAVG)
+    count(RightFBDeadVBVeryLowHBLowVel$ExAVG)
+
+RightFBDeadVBLowHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 3.1, 6), between(Vel, 91.1, 93))
+    mean(RightFBDeadVBLowHBLowVel$ExAVG)
+    count(RightFBDeadVBLowHBLowVel$ExAVG)
+
+RightFBDeadVBAvgHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 6.1, 8), between(Vel, 91.1, 93))
+    mean(RightFBDeadVBAvgHBLowVel$ExAVG)
+    count(RightFBDeadVBAvgHBLowVel$ExAVG)
+
+RightFBDeadVBHighHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 8.1, 10), between(Vel, 91.1, 93))
+    mean(RightFBDeadVBHighHBLowVel$ExAVG)
+    count(RightFBDeadVBHighHBLowVel$ExAVG)
+
+RightFBDeadVBVeryHighHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= 10.1, between(Vel, 91.1, 93))
+    mean(RightFBDeadVBVeryHighHBLowVel$ExAVG)
+    count(RightFBDeadVBVeryHighHBLowVel$ExAVG)
+
+#Low Velocity Category and High VB
+RightFBHighVBVeryLowHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= 3, between(Vel, 91.3, 93))
+    mean(RightFBHighVBVeryLowHBLowVel$ExAVG)
+    count(RightFBHighVBVeryLowHBLowVel$ExAVG)
+
+RightFBHighVBLowHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 3.1, 6), between(Vel, 91.1, 93))
+    mean(RightFBHighVBLowHBLowVel$ExAVG)
+    count(RightFBHighVBLowHBLowVel$ExAVG)
+
+RightFBHighVBAvgHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 6.1, 8), between(Vel, 91.1, 93))
+    mean(RightFBHighVBAvgHBLowVel$ExAVG)
+    count(RightFBHighVBAvgHBLowVel$ExAVG)
+
+RightFBHighVBHighHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 8.1, 10), between(Vel, 91.1, 93))
+    mean(RightFBHighVBHighHBLowVel$ExAVG)
+    count(RightFBHighVBHighHBLowVel$ExAVG)
+
+RightFBHighVBVeryHighHBLowVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= 10.1, between(Vel, 91.1, 93))
+    mean(RightFBHighVBVeryHighHBLowVel$ExAVG)
+    count(RightFBHighVBVeryHighHBLowVel$ExAVG)
+
+#Low Velocity Category and Very High VB
+RightFBVeryHighVBVeryLowHBLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= 3, between(Vel, 91.1, 93))
+    mean(RightFBVeryHighVBVeryLowHBLowVel$ExAVG)
+    count(RightFBVeryHighVBVeryLowHBLowVel$ExAVG)
+
+RightFBVeryHighVBLowHBLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 3.1, 6), between(Vel, 91.1, 93))
+    mean(RightFBVeryHighVBLowHBLowVel$ExAVG)
+    count(RightFBVeryHighVBLowHBLowVel$ExAVG)
+
+RightFBVeryHighVBAvgHBLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 6.1, 8), between(Vel, 91.1, 93))
+    mean(RightFBVeryHighVBAvgHBLowVel$ExAVG)
+    count(RightFBVeryHighVBAvgHBLowVel$ExAVG)
+    
+RightFBVeryHighVBHighHBLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 8.1, 10), between(Vel, 91.1, 93))
+    mean(RightFBVeryHighVBHighHBLowVel$ExAVG)
+    count(RightFBVeryHighVBHighHBLowVel$ExAVG)
+
+RightFBVeryHighVBVeryHighHBLowVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= 10.1, between(Vel, 91.1, 93))
+    mean(RightFBVeryHighVBVeryHighHBLowVel$ExAVG)
+    count(RightFBVeryHighVBVeryHighHBLowVel$ExAVG)
+
+```
+
+#Average Vel RH FB
+```{r}
+#Avg Velocity Category and Very Low VB
+RightFBVeryLowVBVeryLowHBAvgVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk <= 3, between(Vel, 93.1, 95))
+    mean(RightFBVeryLowVBVeryLowHBAvgVel$ExAVG)
+    count(RightFBVeryLowVBVeryLowHBAvgVel)
+
+RightFBVeryLowVBLowHBAvgVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 3.1, 6), between(Vel, 93.1, 95))
+    mean(RightFBVeryLowVBLowHBAvgVel$ExAVG)
+    count(RightFBVeryLowVBLowHBAvgVel)
+
+RightFBVeryLowVBAvgHBAvgVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 6.1, 8), between(Vel, 93.1, 95))
+    mean(RightFBVeryLowVBAvgHBAvgVel$ExAVG)
+    count(RightFBVeryLowVBAvgHBAvgVel)
+
+RightFBVeryLowVBHighHBAvgVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 8.1, 10), between(Vel, 93.1, 95))
+    mean(RightFBVeryLowVBHighHBAvgVel$ExAVG)
+    count(RightFBVeryLowVBHighHBAvgVel)
+
+RightFBVeryLowVBVeryHighHBAvgVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk >= 10.1, between(Vel, 93.1, 95))
+    mean(RightFBVeryLowVBVeryHighHBAvgVel$ExAVG)
+    count(RightFBVeryLowVBVeryHighHBAvgVel)
+
+
+#Avg Velocity Category and Low VB
+RightFBLowVBVeryLowHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= 3, between(Vel, 93.1, 95))
+    mean(RightFBLowVBVeryLowHBAvgVel$ExAVG)
+    count(RightFBLowVBVeryLowHBAvgVel)
+
+RightFBLowVBLowHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 3.1, 6), between(Vel, 93.1, 95))
+    mean(RightFBLowVBLowHBAvgVel$ExAVG)
+    count(RightFBLowVBLowHBAvgVel)
+
+RightFBLowVBAvgHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 6.1, 8), between(Vel, 93.1, 95))
+    mean(RightFBLowVBAvgHBAvgVel$ExAVG)
+    count(RightFBLowVBAvgHBAvgVel)
+    
+RightFBLowVBHighHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 8.1, 10), between(Vel, 93.1, 95))
+    mean(RightFBLowVBHighHBAvgVel$ExAVG)
+    count(RightFBLowVBHighHBAvgVel)
+
+RightFBLowVBVeryHighHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= 10.1, between(Vel, 93.1, 95))
+    mean(RightFBLowVBVeryHighHBAvgVel$ExAVG)
+    count(RightFBLowVBVeryHighHBAvgVel)
+
+#Avg Velocity Category and Dead VB
+RightFBDeadVBVeryLowHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= 3, between(Vel, 93.1, 95))
+    mean(RightFBDeadVBVeryLowHBAvgVel$ExAVG)
+    count(RightFBDeadVBVeryLowHBAvgVel)
+
+RightFBDeadVBLowHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 3.1, 6), between(Vel, 93.1, 95))
+    mean(RightFBDeadVBLowHBAvgVel$ExAVG)
+    count(RightFBDeadVBLowHBAvgVel)
+
+RightFBDeadVBAvgHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 6.1, 8), between(Vel, 93.1, 95))
+    mean(RightFBDeadVBAvgHBAvgVel$ExAVG)
+    count(RightFBDeadVBAvgHBAvgVel)
+
+RightFBDeadVBHighHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 8.1, 10), between(Vel, 93.1, 95))
+    mean(RightFBDeadVBHighHBAvgVel$ExAVG)
+    count(RightFBDeadVBHighHBAvgVel)
+
+RightFBDeadVBVeryHighHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= 10.1, between(Vel, 93.1, 95))
+    mean(RightFBDeadVBVeryHighHBAvgVel$ExAVG)
+    count(RightFBDeadVBVeryHighHBAvgVel)
+
+#Avg Velocity Category and High VB
+RightFBHighVBVeryLowHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= 3, between(Vel, 93.1, 95))
+    mean(RightFBHighVBVeryLowHBAvgVel$ExAVG)
+    count(RightFBHighVBVeryLowHBAvgVel)
+
+RightFBHighVBLowHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 3.1, 6), between(Vel, 93.1, 95))
+    mean(RightFBHighVBLowHBAvgVel$ExAVG)
+    count(RightFBHighVBLowHBAvgVel)
+
+RightFBHighVBAvgHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 6.1, 8), between(Vel, 93.1, 95))
+    mean(RightFBHighVBAvgHBAvgVel$ExAVG)
+    count(RightFBHighVBAvgHBAvgVel)
+
+RightFBHighVBHighHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 8.1, 10), between(Vel, 93.1, 95))
+    mean(RightFBHighVBHighHBAvgVel$ExAVG)
+    count(RightFBHighVBHighHBAvgVel)
+
+RightFBHighVBVeryHighHBAvgVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= 10.1, between(Vel, 93.1, 95))
+    mean(RightFBHighVBVeryHighHBAvgVel$ExAVG)
+    count(RightFBHighVBVeryHighHBAvgVel)
+
+#Avg Velocity Category and Very High VB
+RightFBVeryHighVBVeryLowHBAvgVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= 3, between(Vel, 93.1, 95))
+    mean(RightFBVeryHighVBVeryLowHBAvgVel$ExAVG)
+    count(RightFBVeryHighVBVeryLowHBAvgVel)
+
+RightFBVeryHighVBLowHBAvgVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 3.1, 6), between(Vel, 93.1, 95))
+    mean(RightFBVeryHighVBLowHBAvgVel$ExAVG)
+    count(RightFBVeryHighVBLowHBAvgVel)
+
+RightFBVeryHighVBAvgHBAvgVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 6.1, 8), between(Vel, 93.1, 95))
+    mean(RightFBVeryHighVBAvgHBAvgVel$ExAVG)
+    count(RightFBVeryHighVBAvgHBAvgVel)
+
+RightFBVeryHighVBHighHBAvgVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 8.1, 10), between(Vel, 93.1, 95))
+    mean(RightFBVeryHighVBHighHBAvgVel$ExAVG)
+    count(RightFBVeryHighVBHighHBAvgVel)
+
+RightFBVeryHighVBVeryHighHBAvgVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= 10.1, between(Vel, 93.1, 95))
+    mean(RightFBVeryHighVBVeryHighHBAvgVel$ExAVG)
+    count(RightFBVeryHighVBVeryHighHBAvgVel)
+
+```
+
+#High Vel RH FB
+```{r}
+#High Velocity Category and Very Low VB
+RightFBVeryLowVBVeryLowHBHighVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk <= 3, between(Vel, 95.1, 97))
+  mean(RightFBVeryLowVBVeryLowHBHighVel$ExAVG)
+  count(RightFBVeryLowVBVeryLowHBHighVel)
+
+RightFBVeryLowVBLowHBHighVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 3.1, 6), between(Vel, 95.1, 97))
+  mean(RightFBVeryLowVBLowHBHighVel$ExAVG)
+  count(RightFBVeryLowVBLowHBHighVel)
+
+RightFBVeryLowVBAvgHBHighVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 6.1, 8), between(Vel, 95.1, 97))
+    mean(RightFBVeryLowVBAvgHBHighVel$ExAVG)
+    count(RightFBVeryLowVBAvgHBHighVel)
+
+RightFBVeryLowVBHighHBHighVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 8.1, 10), between(Vel, 95.1, 97))
+    mean(RightFBVeryLowVBHighHBHighVel$ExAVG)
+    count(RightFBVeryLowVBHighHBHighVel)
+
+RightFBVeryLowVBVeryHighHBHighVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk >= 10.1, between(Vel, 95.1, 97))
+    mean(RightFBVeryLowVBVeryHighHBHighVel$ExAVG)
+    count(RightFBVeryLowVBVeryHighHBHighVel)
+
+#High Velocity Category and Low VB
+RightFBLowVBVeryLowHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= 3, between(Vel, 95.1, 97))
+    mean(RightFBLowVBVeryLowHBHighVel$ExAVG)
+    count(RightFBLowVBVeryLowHBHighVel)
+
+RightFBLowVBLowHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 3.1, 6), between(Vel, 95.1, 97))
+    mean(RightFBLowVBLowHBHighVel$ExAVG)
+    count(RightFBLowVBLowHBHighVel)
+    
+RightFBLowVBAvgHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 6.1, 8), between(Vel, 95.1, 97))
+    mean(RightFBLowVBAvgHBHighVel$ExAVG)
+    count(RightFBLowVBAvgHBHighVel)
+
+RightFBLowVBHighHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 8.1, 10), between(Vel, 95.1, 97))
+    mean(RightFBLowVBHighHBHighVel$ExAVG)
+    count(RightFBLowVBHighHBHighVel)
+
+RightFBLowVBVeryHighHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= 10.1, between(Vel, 95.1, 97))
+    mean(RightFBLowVBVeryHighHBHighVel$ExAVG)
+    count(RightFBLowVBVeryHighHBHighVel)
+
+#High Velocity Category and Dead VB
+RightFBDeadVBVeryLowHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= 3, between(Vel, 95.1, 97))
+    mean(RightFBDeadVBVeryLowHBHighVel$ExAVG)
+    count(RightFBDeadVBVeryLowHBHighVel)
+
+RightFBDeadVBLowHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 3.1, 6), between(Vel, 95.1, 97))
+    mean(RightFBDeadVBLowHBHighVel$ExAVG)
+    count(RightFBDeadVBLowHBHighVel)
+
+RightFBDeadVBAvgHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 6.1, 8), between(Vel, 95.1, 97))
+    mean(RightFBDeadVBAvgHBHighVel$ExAVG)
+    count(RightFBDeadVBAvgHBHighVel)
+
+RightFBDeadVBHighHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 8.1, 10), between(Vel, 95.1, 97))
+    mean(RightFBDeadVBHighHBHighVel$ExAVG)
+    count(RightFBDeadVBHighHBHighVel)
+
+RightFBDeadVBVeryHighHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= 10.1, between(Vel, 95.1, 97))
+    mean(RightFBDeadVBVeryHighHBHighVel$ExAVG)
+    count(RightFBDeadVBVeryHighHBHighVel)
+
+#High Velocity Category and High VB
+RightFBHighVBVeryLowHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= 3, between(Vel, 95.1, 97))
+    mean(RightFBHighVBVeryLowHBHighVel$ExAVG)
+    count(RightFBHighVBVeryLowHBHighVel)
+
+RightFBHighVBLowHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 3.1, 6), between(Vel, 95.1, 97))
+    mean(RightFBHighVBLowHBHighVel$ExAVG)
+    count(RightFBHighVBLowHBHighVel)
+
+RightFBHighVBAvgHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 6.1, 8), between(Vel, 95.1, 97))
+    mean(RightFBHighVBAvgHBHighVel$ExAVG)
+    count(RightFBHighVBAvgHBHighVel)
+
+RightFBHighVBHighHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 8.1, 10), between(Vel, 95.1, 97))
+    mean(RightFBHighVBHighHBHighVel$ExAVG) 
+    count(RightFBHighVBHighHBHighVel)
+
+RightFBHighVBVeryHighHBHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= 10.1, between(Vel, 95.1, 97))
+    mean(RightFBHighVBVeryHighHBHighVel$ExAVG)
+    count(RightFBHighVBVeryHighHBHighVel)
+
+#High Velocity Category and Very High VB
+RightFBVeryHighVBVeryLowHBHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= 3, between(Vel, 95.1, 97))
+    mean(RightFBVeryHighVBVeryLowHBHighVel$ExAVG)
+    count(RightFBVeryHighVBVeryLowHBHighVel)
+
+RightFBVeryHighVBLowHBHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 3.1, 6), between(Vel, 95.1, 97))
+    mean(RightFBVeryHighVBLowHBHighVel$ExAVG)
+    count(RightFBVeryHighVBLowHBHighVel)
+
+RightFBVeryHighVBAvgHBHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 6.1, 8), between(Vel, 95.1, 97))
+    mean(RightFBVeryHighVBAvgHBHighVel$ExAVG)
+    count(RightFBVeryHighVBAvgHBHighVel)
+
+RightFBVeryHighVBHighHBHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 8.1, 10), between(Vel, 95.1, 97))
+    mean(RightFBVeryHighVBHighHBHighVel$ExAVG)
+    count(RightFBVeryHighVBHighHBHighVel)
+
+RightFBVeryHighVBVeryHighHBHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= 10.1, between(Vel, 95.1, 97))
+    mean(RightFBVeryHighVBVeryHighHBHighVel$ExAVG)
+    count(RightFBVeryHighVBVeryHighHBHighVel)
+
+```
+
+#Very High Vel RH FB
+```{r}
+#Very High Velocity Category and Very Low VB
+RightFBVeryLowVBVeryLowHBVeryHighVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk <= 3, Vel >= 97.1)
+    mean(RightFBVeryLowVBVeryLowHBVeryHighVel$ExAVG)
+    count(RightFBVeryLowVBVeryLowHBVeryHighVel)
+
+RightFBVeryLowVBLowHBVeryHighVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 3.1, 6), Vel >= 97.1)
+    mean(RightFBVeryLowVBLowHBVeryHighVel$ExAVG)
+    count(RightFBVeryLowVBLowHBVeryHighVel)
+
+RightFBVeryLowVBAvgHBVeryHighVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 6.1, 8), Vel >= 97.1)
+    mean(RightFBVeryLowVBAvgHBVeryHighVel$ExAVG)
+    count(RightFBVeryLowVBAvgHBVeryHighVel)
+
+RightFBVeryLowVBHighHBVeryHighVel <- filter(RightFB1, TMIndVertBrk <= 10, between(TMHrzBrk, 8.1, 10), Vel >= 97.1)
+    mean(RightFBVeryLowVBHighHBVeryHighVel$ExAVG)
+    count(RightFBVeryLowVBHighHBVeryHighVel)
+
+RightFBVeryLowVBVeryHighHBVeryHighVel <- filter(RightFB1, TMIndVertBrk <= 10, TMHrzBrk >= 10.1, Vel >= 97.1)
+    mean(RightFBVeryLowVBVeryHighHBVeryHighVel$ExAVG)
+    count(RightFBVeryLowVBVeryHighHBVeryHighVel)
+
+
+#Very High Velocity Category and Low VB
+RightFBLowVBVeryLowHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= 3, Vel >= 97.1)
+    mean(RightFBLowVBVeryLowHBVeryHighVel$ExAVG)
+    count(RightFBLowVBVeryLowHBVeryHighVel)
+
+RightFBLowVBLowHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 3.1, 6), Vel >= 97.1)
+    mean(RightFBLowVBLowHBVeryHighVel$ExAVG)
+    count(RightFBLowVBLowHBVeryHighVel)
+
+RightFBLowVBAvgHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 6.1, 8), Vel >= 97.1)
+    mean(RightFBLowVBAvgHBVeryHighVel$ExAVG)
+    count(RightFBLowVBAvgHBVeryHighVel)
+
+RightFBLowVBHighHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, 8.1, 10), Vel >= 97.1)
+    mean(RightFBLowVBHighHBVeryHighVel$ExAVG)
+    count(RightFBLowVBHighHBVeryHighVel)
+
+RightFBLowVBVeryHighHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= 10.1, Vel >= 97.1)
+    mean(RightFBLowVBVeryHighHBVeryHighVel$ExAVG)
+    count(RightFBLowVBVeryHighHBVeryHighVel)
+
+#Very High Velocity Category and Dead VB
+RightFBDeadVBVeryLowHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= 3, Vel >= 97.1)
+    mean(RightFBDeadVBVeryLowHBVeryHighVel$ExAVG)
+    count(RightFBDeadVBVeryLowHBVeryHighVel)
+
+RightFBDeadVBLowHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 3.1, 6), Vel >= 97.1)
+    mean(RightFBDeadVBLowHBVeryHighVel$ExAVG)
+    count(RightFBDeadVBLowHBVeryHighVel)
+
+RightFBDeadVBAvgHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 6.1, 8), Vel >= 97.1)
+    mean(RightFBDeadVBAvgHBVeryHighVel$ExAVG)
+    count(RightFBDeadVBAvgHBVeryHighVel)
+
+RightFBDeadVBHighHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, 8.1, 10), Vel >= 97.1)
+    mean(RightFBDeadVBHighHBVeryHighVel$ExAVG)
+    count(RightFBDeadVBHighHBVeryHighVel)
+
+RightFBDeadVBVeryHighHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= 10.1, Vel >= 97.1)
+    mean(RightFBDeadVBVeryHighHBVeryHighVel$ExAVG)
+    count(RightFBDeadVBVeryHighHBVeryHighVel)
+
+#Very High Velocity Category and High VB
+RightFBHighVBVeryLowHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= 3, Vel >= 97.1)
+    mean(RightFBHighVBVeryLowHBVeryHighVel$ExAVG)
+    count(RightFBHighVBVeryLowHBVeryHighVel)
+
+RightFBHighVBLowHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 3.1, 6), Vel >= 97.1)
+    mean(RightFBHighVBLowHBVeryHighVel$ExAVG)
+    count(RightFBHighVBLowHBVeryHighVel)
+
+RightFBHighVBAvgHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 6.1, 8), Vel >= 97.1)
+    mean(RightFBHighVBAvgHBVeryHighVel$ExAVG)
+    count(RightFBHighVBAvgHBVeryHighVel)
+
+RightFBHighVBHighHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, 8.1, 10), Vel >= 97.1)
+    mean(RightFBHighVBHighHBVeryHighVel$ExAVG)
+    count(RightFBHighVBHighHBVeryHighVel)
+
+RightFBHighVBVeryHighHBVeryHighVel <- filter(RightFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= 10.1, Vel >= 97.1)
+    mean(RightFBHighVBVeryHighHBVeryHighVel$ExAVG)
+    count(RightFBHighVBVeryHighHBVeryHighVel)
+
+
+#Very High Velocity Category and Very High VB
+RightFBVeryHighVBVeryLowHBVeryHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= 3, Vel >= 97.1)
+    mean(RightFBVeryHighVBVeryLowHBVeryHighVel$ExAVG)
+    count(RightFBVeryHighVBVeryLowHBVeryHighVel)
+
+RightFBVeryHighVBLowHBVeryHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 3.1, 6), Vel >= 97.1)
+    mean(RightFBVeryHighVBLowHBVeryHighVel$ExAVG)
+    count(RightFBVeryHighVBLowHBVeryHighVel)
+
+RightFBVeryHighVBAvgHBVeryHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 6.1, 8), Vel >= 97.1)
+    mean(RightFBVeryHighVBAvgHBVeryHighVel$ExAVG)
+    count(RightFBVeryHighVBAvgHBVeryHighVel)
+
+RightFBVeryHighVBHighHBVeryHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, 8.1, 10), Vel >= 97.1)
+    mean(RightFBVeryHighVBHighHBVeryHighVel$ExAVG)
+    count(RightFBVeryHighVBHighHBVeryHighVel)
+
+RightFBVeryHighVBVeryHighHBVeryHighVel <- filter(RightFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= 10.1, Vel >= 97.1)
+    mean(RightFBVeryHighVBVeryHighHBVeryHighVel$ExAVG)
+    count(RightFBVeryHighVBVeryHighHBVeryHighVel)
+```
+
+#Very Low Velo LHP
+```{r}
+#Very Low Velocity Category and Very Low VB
+library(dplyr)
+LeftFBVeryLowVBVeryLowHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk >= -3, Vel <=91)
+    mean(LeftFBVeryLowVBVeryLowHBVeryLowVel$ExAVG)
+    count(LeftFBVeryLowVBVeryLowHBVeryLowVel)
+
+LeftFBVeryLowVBLowHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -6, 3.1), Vel <=91)
+    mean(LeftFBVeryLowVBLowHBVeryLowVel$ExAVG)
+    count(LeftFBVeryLowVBLowHBVeryLowVel)
+
+LeftFBVeryLowVBAvgHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -8, -6.1), Vel <=91)
+    mean(LeftFBVeryLowVBAvgHBVeryLowVel$ExAVG)
+    count(LeftFBVeryLowVBAvgHBVeryLowVel)
+
+LeftFBVeryLowVBHighHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -10, -8.1), Vel <=91)
+    mean(LeftFBVeryLowVBHighHBVeryLowVel$ExAVG)
+    count(LeftFBVeryLowVBHighHBVeryLowVel)
+
+LeftFBVeryLowVBVeryHighHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk <= -10.1, Vel <=91)
+  mean(LeftFBVeryLowVBVeryHighHBVeryLowVel$ExAVG)
+  count(LeftFBVeryLowVBVeryHighHBVeryLowVel)
+
+
+#Very Low Velocity Category and Low VB
+  
+LeftFBLowVBVeryLowHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >=-3, Vel <=91)
+    mean(LeftFBLowVBVeryLowHBVeryLowVel$ExAVG)
+    count(LeftFBLowVBVeryLowHBVeryLowVel)
+    
+LeftFBLowVBLowHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -6.0, -3.1), Vel <=91)
+    mean(LeftFBLowVBLowHBVeryLowVel$ExAVG)
+    count(LeftFBLowVBLowHBVeryLowVel)
+
+LeftFBLowVBAvgHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -8.0, -6.1), Vel <=91)
+    mean(LeftFBLowVBAvgHBVeryLowVel$ExAVG)
+    count(LeftFBLowVBAvgHBVeryLowVel)
+
+LeftFBLowVBHighHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -10.0, -8.1), Vel <=91)
+    mean(LeftFBLowVBHighHBVeryLowVel$ExAVG)
+    count(LeftFBLowVBHighHBVeryLowVel)
+
+LeftFBLowVBVeryHighHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= -10.1, Vel <=91)
+    mean(LeftFBLowVBVeryHighHBVeryLowVel$ExAVG)
+    count(LeftFBLowVBVeryHighHBVeryLowVel)
+
+
+#Very Low Velocity Category and Dead VB
+LeftFBDeadVBVeryLowHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= -3, Vel <= 91)
+    mean(LeftFBDeadVBVeryLowHBVeryLowVel$ExAVG)
+    count(LeftFBDeadVBVeryLowHBVeryLowVel)
+
+LeftFBDeadVBLowHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -6.0, -3.1), Vel <= 91)
+    mean(LeftFBDeadVBLowHBVeryLowVel$ExAVG)
+    count(LeftFBDeadVBLowHBVeryLowVel)
+
+LeftFBDeadVBAvgHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -8.0, -6.1), Vel <= 91)
+    mean(LeftFBDeadVBAvgHBVeryLowVel$ExAVG)
+    count(LeftFBDeadVBAvgHBVeryLowVel)
+    
+LeftFBDeadVBHighHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -10, -8.1), Vel <= 91)
+    mean(LeftFBDeadVBHighHBVeryLowVel$ExAVG)
+    count(LeftFBDeadVBHighHBVeryLowVel)
+    
+LeftFBDeadVBVeryHighHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= -10.1, Vel <= 91)
+    mean(LeftFBDeadVBVeryHighHBVeryLowVel$ExAVG)
+    count(LeftFBDeadVBVeryHighHBVeryLowVel)
+
+
+#Very Low Velocity Category and High VB
+LeftFBHighVBVeryLowHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >=-3, Vel <= 91)
+    mean(LeftFBHighVBVeryLowHBVeryLowVel$ExAVG)
+    count(LeftFBHighVBVeryLowHBVeryLowVel)
+
+LeftFBHighVBLowHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -6.0, -3.1), Vel <= 91)
+    mean(LeftFBHighVBLowHBVeryLowVel$ExAVG)
+    count(LeftFBHighVBLowHBVeryLowVel)
+
+LeftFBHighVBAvgHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -8.0, -6.1), Vel <= 91)
+    mean(LeftFBHighVBAvgHBVeryLowVel$ExAVG)
+    count(LeftFBHighVBAvgHBVeryLowVel)
+    
+LeftFBHighVBHighHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -10.0, -8.1), Vel <= 91)
+    mean(LeftFBHighVBHighHBVeryLowVel$ExAVG)
+    count(LeftFBHighVBHighHBVeryLowVel)
+    
+LeftFBHighVBVeryHighHBVeryLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= -10.1, Vel <= 91)
+    mean(LeftFBHighVBVeryHighHBVeryLowVel$ExAVG)
+    count(LeftFBHighVBVeryHighHBVeryLowVel)
+
+#Very Low Velocity Category and Very High VB
+LeftFBVeryHighVBVeryLowHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= -3,Vel <= 91)
+    mean(LeftFBVeryHighVBVeryLowHBVeryLowVel$ExAVG)
+    count(LeftFBVeryHighVBVeryLowHBVeryLowVel)
+
+LeftFBVeryHighVBLowHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -6.0, -3.1),Vel <= 91)
+    mean(LeftFBVeryHighVBLowHBVeryLowVel$ExAVG)
+    count(LeftFBVeryHighVBLowHBVeryLowVel)
+
+LeftFBVeryHighVBAvgHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -8.0, -6.1),Vel <= 91)
+    mean(LeftFBVeryHighVBAvgHBVeryLowVel$ExAVG)
+    count(LeftFBVeryHighVBAvgHBVeryLowVel)
+    
+LeftFBVeryHighVBHighHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -10.0, -8.1),Vel <= 91)
+    mean(LeftFBVeryHighVBHighHBVeryLowVel$ExAVG)
+    count(LeftFBVeryHighVBHighHBVeryLowVel)
+    
+LeftFBVeryHighVBVeryHighHBVeryLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= -10.1,Vel <= 91)
+    mean(LeftFBVeryHighVBVeryHighHBVeryLowVel$ExAVG)
+    count(LeftFBVeryHighVBVeryHighHBVeryLowVel)
+```
+
+#Low Velo LHP FB
+```{r}
+#Low Velocity Category and Very Low VB
+LeftFBVeryLowVBVeryLowHBLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk >= -3, between(Vel, 91.1, 93))
+    mean(LeftFBVeryLowVBVeryLowHBLowVel$ExAVG)
+    count(LeftFBVeryLowVBVeryLowHBLowVel)
+    
+LeftFBVeryLowVBLowHBLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -6.0, -3.1), between(Vel, 91.1, 93))
+    mean(LeftFBVeryLowVBLowHBLowVel$ExAVG)
+    count(LeftFBVeryLowVBLowHBLowVel)
+    
+LeftFBVeryLowVBAvgHBLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk,-8.0, -6.1), between(Vel, 91.1, 93))
+    mean(LeftFBVeryLowVBAvgHBLowVel$ExAVG)
+    count(LeftFBVeryLowVBAvgHBLowVel)
+    
+LeftFBVeryLowVBHighHBLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -10.0, -8.1), between(Vel, 91.1, 93))
+    mean(LeftFBVeryLowVBHighHBLowVel$ExAVG)
+    count(LeftFBVeryLowVBHighHBLowVel)
+    
+LeftFBVeryLowVBVeryHighHBLowVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk <= -10.1, between(Vel, 91.1, 93))
+    mean(LeftFBVeryLowVBVeryHighHBLowVel$ExAVG)
+    count(LeftFBVeryLowVBVeryHighHBLowVel)
+
+#Low Velocity Category and Low VB
+LeftFBLowVBVeryLowHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= -3, between(Vel, 91.3, 93))
+    mean(LeftFBLowVBVeryLowHBLowVel$ExAVG)
+    count(LeftFBLowVBVeryLowHBLowVel)
+    
+LeftFBLowVBLowHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -6.0, -3.1), between(Vel, 91.1, 93))
+    mean(LeftFBLowVBLowHBLowVel$ExAVG)
+    count(LeftFBLowVBLowHBLowVel)
+    
+LeftFBLowVBAvgHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -8.0, -6.1), between(Vel, 91.1, 93))
+    mean(LeftFBLowVBAvgHBLowVel$ExAVG)
+    count(LeftFBLowVBAvgHBLowVel)
+
+LeftFBLowVBHighHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -10.0, -8.1), between(Vel, 91.1, 93))
+    mean(LeftFBLowVBHighHBLowVel$ExAVG)
+    count(LeftFBLowVBHighHBLowVel)
+
+LeftFBLowVBVeryHighHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= -10.1, between(Vel, 91.1, 93))
+    mean(LeftFBLowVBVeryHighHBLowVel$ExAVG)
+    count(LeftFBLowVBVeryHighHBLowVel)
+
+#Low Velocity Category and Dead VB
+LeftFBDeadVBVeryLowHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= -3, between(Vel, 91.3, 93))
+    mean(LeftFBDeadVBVeryLowHBLowVel$ExAVG)
+    count(LeftFBDeadVBVeryLowHBLowVel)
+
+LeftFBDeadVBLowHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -6.0, -3.1), between(Vel, 91.1, 93))
+    mean(LeftFBDeadVBLowHBLowVel$ExAVG)
+    count(LeftFBDeadVBLowHBLowVel)
+
+LeftFBDeadVBAvgHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -8.0, -6.1), between(Vel, 91.1, 93))
+    mean(LeftFBDeadVBAvgHBLowVel$ExAVG)
+    count(LeftFBDeadVBAvgHBLowVel)
+
+LeftFBDeadVBHighHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -10.0, -8.1), between(Vel, 91.1, 93))
+    mean(LeftFBDeadVBHighHBLowVel$ExAVG)
+    count(LeftFBDeadVBHighHBLowVel)
+
+LeftFBDeadVBVeryHighHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= -10.1, between(Vel, 91.1, 93))
+    mean(LeftFBDeadVBVeryHighHBLowVel$ExAVG)
+    count(LeftFBDeadVBVeryHighHBLowVel)
+
+#Low Velocity Category and High VB
+LeftFBHighVBVeryLowHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= -3, between(Vel, 91.3, 93))
+    mean(LeftFBHighVBVeryLowHBLowVel$ExAVG)
+    count(LeftFBHighVBVeryLowHBLowVel)
+
+LeftFBHighVBLowHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -6.0, -3.1), between(Vel, 91.1, 93))
+    mean(LeftFBHighVBLowHBLowVel$ExAVG)
+    count(LeftFBHighVBLowHBLowVel)
+
+LeftFBHighVBAvgHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -8.0, -6.1), between(Vel, 91.1, 93))
+    mean(LeftFBHighVBAvgHBLowVel$ExAVG)
+    count(LeftFBHighVBAvgHBLowVel)
+
+LeftFBHighVBHighHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -10.0, -8.1), between(Vel, 91.1, 93))
+    mean(LeftFBHighVBHighHBLowVel$ExAVG)
+    count(LeftFBHighVBHighHBLowVel)
+
+LeftFBHighVBVeryHighHBLowVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= -10.1, between(Vel, 91.1, 93))
+    mean(LeftFBHighVBVeryHighHBLowVel$ExAVG)
+    count(LeftFBHighVBVeryHighHBLowVel)
+
+#Low Velocity Category and Very High VB
+LeftFBVeryHighVBVeryLowHBLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= -3, between(Vel, 91.1, 93))
+    mean(LeftFBVeryHighVBVeryLowHBLowVel$ExAVG)
+    count(LeftFBVeryHighVBVeryLowHBLowVel)
+
+LeftFBVeryHighVBLowHBLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -6.0, -3.1), between(Vel, 91.1, 93))
+    mean(LeftFBVeryHighVBLowHBLowVel$ExAVG)
+    count(LeftFBVeryHighVBLowHBLowVel)
+
+LeftFBVeryHighVBAvgHBLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -8.0, -6.1), between(Vel, 91.1, 93))
+    mean(LeftFBVeryHighVBAvgHBLowVel$ExAVG)
+    count(LeftFBVeryHighVBAvgHBLowVel)
+    
+LeftFBVeryHighVBHighHBLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -10.0, -8.1), between(Vel, 91.1, 93))
+    mean(LeftFBVeryHighVBHighHBLowVel$ExAVG)
+    count(LeftFBVeryHighVBHighHBLowVel)
+
+LeftFBVeryHighVBVeryHighHBLowVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= -10.1, between(Vel, 91.1, 93))
+    mean(LeftFBVeryHighVBVeryHighHBLowVel$ExAVG)
+    count(LeftFBVeryHighVBVeryHighHBLowVel)
+```
+
+#Average Velo LHP FB
+```{r}
+#Avg Velocity Category and Very Low VB
+LeftFBVeryLowVBVeryLowHBAvgVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk >= -3, between(Vel, 93.1, 95))
+    mean(LeftFBVeryLowVBVeryLowHBAvgVel$ExAVG)
+    count(LeftFBVeryLowVBVeryLowHBAvgVel)
+
+LeftFBVeryLowVBLowHBAvgVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -6.0, -3.1), between(Vel, 93.1, 95))
+    mean(LeftFBVeryLowVBLowHBAvgVel$ExAVG)
+    count(LeftFBVeryLowVBLowHBAvgVel)
+
+LeftFBVeryLowVBAvgHBAvgVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -8.0, -6.1), between(Vel, 93.1, 95))
+    mean(LeftFBVeryLowVBAvgHBAvgVel$ExAVG)
+    count(LeftFBVeryLowVBAvgHBAvgVel)
+
+LeftFBVeryLowVBHighHBAvgVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -10.0, -8.1), between(Vel, 93.1, 95))
+    mean(LeftFBVeryLowVBHighHBAvgVel$ExAVG)
+    count(LeftFBVeryLowVBHighHBAvgVel)
+
+LeftFBVeryLowVBVeryHighHBAvgVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk <= -10.1, between(Vel, 93.1, 95))
+    mean(LeftFBVeryLowVBVeryHighHBAvgVel$ExAVG)
+    count(LeftFBVeryLowVBVeryHighHBAvgVel)
+
+
+#Avg Velocity Category and Low VB
+LeftFBLowVBVeryLowHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= -3, between(Vel, 93.1, 95))
+    mean(LeftFBLowVBVeryLowHBAvgVel$ExAVG)
+    count(LeftFBLowVBVeryLowHBAvgVel)
+
+LeftFBLowVBLowHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -6.0, -3.1), between(Vel, 93.1, 95))
+    mean(LeftFBLowVBLowHBAvgVel$ExAVG)
+    count(LeftFBLowVBLowHBAvgVel)
+
+LeftFBLowVBAvgHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -8.0, -6.1), between(Vel, 93.1, 95))
+    mean(LeftFBLowVBAvgHBAvgVel$ExAVG)
+    count(LeftFBLowVBAvgHBAvgVel)
+    
+LeftFBLowVBHighHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -10.0, -8.1), between(Vel, 93.1, 95))
+    mean(LeftFBLowVBHighHBAvgVel$ExAVG)
+    count(LeftFBLowVBHighHBAvgVel)
+
+LeftFBLowVBVeryHighHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= -10.1, between(Vel, 93.1, 95))
+    mean(LeftFBLowVBVeryHighHBAvgVel$ExAVG)
+    count(LeftFBLowVBVeryHighHBAvgVel)
+
+#Avg Velocity Category and Dead VB
+LeftFBDeadVBVeryLowHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= -3, between(Vel, 93.1, 95))
+    mean(LeftFBDeadVBVeryLowHBAvgVel$ExAVG)
+    count(LeftFBDeadVBVeryLowHBAvgVel)
+
+LeftFBDeadVBLowHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -6.0, -3.1), between(Vel, 93.1, 95))
+    mean(LeftFBDeadVBLowHBAvgVel$ExAVG)
+    count(LeftFBDeadVBLowHBAvgVel)
+
+LeftFBDeadVBAvgHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -8.0, -6.1), between(Vel, 93.1, 95))
+    mean(LeftFBDeadVBAvgHBAvgVel$ExAVG)
+    count(LeftFBDeadVBAvgHBAvgVel)
+
+LeftFBDeadVBHighHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -10.0, -8.1), between(Vel, 93.1, 95))
+    mean(LeftFBDeadVBHighHBAvgVel$ExAVG)
+    count(LeftFBDeadVBHighHBAvgVel)
+
+LeftFBDeadVBVeryHighHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= -10.1, between(Vel, 93.1, 95))
+    mean(LeftFBDeadVBVeryHighHBAvgVel$ExAVG)
+    count(LeftFBDeadVBVeryHighHBAvgVel)
+
+#Avg Velocity Category and High VB
+LeftFBHighVBVeryLowHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= -3, between(Vel, 93.1, 95))
+    mean(LeftFBHighVBVeryLowHBAvgVel$ExAVG)
+    count(LeftFBHighVBVeryLowHBAvgVel)
+
+LeftFBHighVBLowHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -6.0, -3.1), between(Vel, 93.1, 95))
+    mean(LeftFBHighVBLowHBAvgVel$ExAVG)
+    count(LeftFBHighVBLowHBAvgVel)
+
+LeftFBHighVBAvgHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -8.0, -6.1), between(Vel, 93.1, 95))
+    mean(LeftFBHighVBAvgHBAvgVel$ExAVG)
+    count(LeftFBHighVBAvgHBAvgVel)
+
+LeftFBHighVBHighHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -10.0, -8.1), between(Vel, 93.1, 95))
+    mean(LeftFBHighVBHighHBAvgVel$ExAVG)
+    count(LeftFBHighVBHighHBAvgVel)
+
+LeftFBHighVBVeryHighHBAvgVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= -10.1, between(Vel, 93.1, 95))
+    mean(LeftFBHighVBVeryHighHBAvgVel$ExAVG)
+    count(LeftFBHighVBVeryHighHBAvgVel)
+
+#Avg Velocity Category and Very High VB
+LeftFBVeryHighVBVeryLowHBAvgVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= -3, between(Vel, 93.1, 95))
+    mean(LeftFBVeryHighVBVeryLowHBAvgVel$ExAVG)
+    count(LeftFBVeryHighVBVeryLowHBAvgVel)
+
+LeftFBVeryHighVBLowHBAvgVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -6.0, -3.1), between(Vel, 93.1, 95))
+    mean(LeftFBVeryHighVBLowHBAvgVel$ExAVG)
+    count(LeftFBVeryHighVBLowHBAvgVel)
+
+LeftFBVeryHighVBAvgHBAvgVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -8.0, -6.1), between(Vel, 93.1, 95))
+    mean(LeftFBVeryHighVBAvgHBAvgVel$ExAVG)
+    count(LeftFBVeryHighVBAvgHBAvgVel)
+
+LeftFBVeryHighVBHighHBAvgVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -10.0, -8.1), between(Vel, 93.1, 95))
+    mean(LeftFBVeryHighVBHighHBAvgVel$ExAVG)
+    count(LeftFBVeryHighVBHighHBAvgVel)
+
+LeftFBVeryHighVBVeryHighHBAvgVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= -10.1, between(Vel, 93.1, 95))
+    mean(LeftFBVeryHighVBVeryHighHBAvgVel$ExAVG)
+    count(LeftFBVeryHighVBVeryHighHBAvgVel)
+```
+
+#High Velocity LHP
+```{r}
+#High Velocity Category and Very Low VB
+LeftFBVeryLowVBVeryLowHBHighVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk >= -3, between(Vel, 95.1, 97))
+  mean(LeftFBVeryLowVBVeryLowHBHighVel$ExAVG)
+  count(LeftFBVeryLowVBVeryLowHBHighVel)
+
+LeftFBVeryLowVBLowHBHighVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -6.0, -3.1), between(Vel, 95.1, 97))
+  mean(LeftFBVeryLowVBLowHBHighVel$ExAVG)
+  count(LeftFBVeryLowVBLowHBHighVel)
+
+LeftFBVeryLowVBAvgHBHighVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk,-8.0, -6.1), between(Vel, 95.1, 97))
+    mean(LeftFBVeryLowVBAvgHBHighVel$ExAVG)
+    count(LeftFBVeryLowVBAvgHBHighVel)
+
+LeftFBVeryLowVBHighHBHighVel <- filter(LeftFB1, TMIndVertBrk <= 10, between(TMHrzBrk, -10.0, -8.1), between(Vel, 95.1, 97))
+    mean(LeftFBVeryLowVBHighHBHighVel$ExAVG)
+    count(LeftFBVeryLowVBHighHBHighVel)
+
+LeftFBVeryLowVBVeryHighHBHighVel <- filter(LeftFB1, TMIndVertBrk <= 10, TMHrzBrk <= -10.1, between(Vel, 95.1, 97))
+    mean(LeftFBVeryLowVBVeryHighHBHighVel$ExAVG)
+    count(LeftFBVeryLowVBVeryHighHBHighVel)
+
+#High Velocity Category and Low VB
+LeftFBLowVBVeryLowHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk >= -3, between(Vel, 95.1, 97))
+    mean(LeftFBLowVBVeryLowHBHighVel$ExAVG)
+    count(LeftFBLowVBVeryLowHBHighVel)
+
+LeftFBLowVBLowHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -6.0, -3.1), between(Vel, 95.1, 97))
+    mean(LeftFBLowVBLowHBHighVel$ExAVG)
+    count(LeftFBLowVBLowHBHighVel)
+    
+LeftFBLowVBAvgHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -8.0, -6.1), between(Vel, 95.1, 97))
+    mean(LeftFBLowVBAvgHBHighVel$ExAVG)
+    count(LeftFBLowVBAvgHBHighVel)
+
+LeftFBLowVBHighHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), between(TMHrzBrk, -10.0, -8.1), between(Vel, 95.1, 97))
+    mean(LeftFBLowVBHighHBHighVel$ExAVG)
+    count(LeftFBLowVBHighHBHighVel)
+
+LeftFBLowVBVeryHighHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 10.1, 12), TMHrzBrk <= -10.1, between(Vel, 95.1, 97))
+    mean(LeftFBLowVBVeryHighHBHighVel$ExAVG)
+    count(LeftFBLowVBVeryHighHBHighVel)
+
+#High Velocity Category and Dead VB
+LeftFBDeadVBVeryLowHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk >= -3, between(Vel, 95.1, 97))
+    mean(LeftFBDeadVBVeryLowHBHighVel$ExAVG)
+    count(LeftFBDeadVBVeryLowHBHighVel)
+
+LeftFBDeadVBLowHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -6.0, -3.1), between(Vel, 95.1, 97))
+    mean(LeftFBDeadVBLowHBHighVel$ExAVG)
+    count(LeftFBDeadVBLowHBHighVel)
+
+LeftFBDeadVBAvgHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -8.0, -6.1), between(Vel, 95.1, 97))
+    mean(LeftFBDeadVBAvgHBHighVel$ExAVG)
+    count(LeftFBDeadVBAvgHBHighVel)
+
+LeftFBDeadVBHighHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), between(TMHrzBrk, -10.0, -8.1), between(Vel, 95.1, 97))
+    mean(LeftFBDeadVBHighHBHighVel$ExAVG)
+    count(LeftFBDeadVBHighHBHighVel)
+
+LeftFBDeadVBVeryHighHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 12.1, 15), TMHrzBrk <= -10.1, between(Vel, 95.1, 97))
+    mean(LeftFBDeadVBVeryHighHBHighVel$ExAVG)
+    count(LeftFBDeadVBVeryHighHBHighVel)
+
+#High Velocity Category and High VB
+LeftFBHighVBVeryLowHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk >= -3, between(Vel, 95.1, 97))
+    mean(LeftFBHighVBVeryLowHBHighVel$ExAVG)
+    count(LeftFBHighVBVeryLowHBHighVel)
+
+LeftFBHighVBLowHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -6.0, -3.1), between(Vel, 95.1, 97))
+    mean(LeftFBHighVBLowHBHighVel$ExAVG)
+    count(LeftFBHighVBLowHBHighVel)
+
+LeftFBHighVBAvgHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -8.0, -6.1), between(Vel, 95.1, 97))
+    mean(LeftFBHighVBAvgHBHighVel$ExAVG)
+    count(LeftFBHighVBAvgHBHighVel)
+
+LeftFBHighVBHighHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), between(TMHrzBrk, -10.0, -8.1), between(Vel, 95.1, 97))
+    mean(LeftFBHighVBHighHBHighVel$ExAVG) 
+    count(LeftFBHighVBHighHBHighVel)
+
+LeftFBHighVBVeryHighHBHighVel <- filter(LeftFB1, between(TMIndVertBrk, 15.1, 18), TMHrzBrk <= -10.1, between(Vel, 95.1, 97))
+    mean(LeftFBHighVBVeryHighHBHighVel$ExAVG)
+    count(LeftFBHighVBVeryHighHBHighVel)
+
+#High Velocity Category and Very High VB
+LeftFBVeryHighVBVeryLowHBHighVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk >= -3, between(Vel, 95.1, 97))
+    mean(LeftFBVeryHighVBVeryLowHBHighVel$ExAVG)
+    count(LeftFBVeryHighVBVeryLowHBHighVel)
+
+LeftFBVeryHighVBLowHBHighVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -6.0, -3.1), between(Vel, 95.1, 97))
+    mean(LeftFBVeryHighVBLowHBHighVel$ExAVG)
+    count(LeftFBVeryHighVBLowHBHighVel)
+
+LeftFBVeryHighVBAvgHBHighVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -8.0, -6.1), between(Vel, 95.1, 97))
+    mean(LeftFBVeryHighVBAvgHBHighVel$ExAVG)
+    count(LeftFBVeryHighVBAvgHBHighVel)
+
+LeftFBVeryHighVBHighHBHighVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, between(TMHrzBrk, -10.0, -8.1), between(Vel, 95.1, 97))
+    mean(LeftFBVeryHighVBHighHBHighVel$ExAVG)
+    count(LeftFBVeryHighVBHighHBHighVel)
+
+LeftFBVeryHighVBVeryHighHBHighVel <- filter(LeftFB1, TMIndVertBrk >= 18.1, TMHrzBrk <= -10.1, between(Vel, 95.1, 97))
+    mean(LeftFBVeryHighVBVeryHighHBHighVel$ExAVG)
+    count(LeftFBVeryHighVBVeryHighHBHighVel)
+```
+
+
+
